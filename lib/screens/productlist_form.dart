@@ -30,7 +30,7 @@ class _ProductFormPageState extends State<ProductFormPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Center(
-          child: Text('Add Product Form'),
+          child: Text('Create Product Form'),
         ),
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,

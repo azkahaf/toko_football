@@ -5,15 +5,28 @@ import 'package:toko_football/screens/productlist_form.dart';
 class ItemCard extends StatelessWidget {
   // Menampilkan kartu dengan ikon dan nama.
 
-  final ItemHomepage item; 
+  final ItemHomepage item;
 
-  const ItemCard(this.item, {super.key}); 
+  const ItemCard(this.item, {super.key});
 
   @override
   Widget build(BuildContext context) {
+    // 🎨 Tentukan warna berdasarkan nama item (warna kolom/tombol)
+    Color backgroundColor;
+    if (item.name == "All Products") {
+      backgroundColor = Colors.blue;
+    } else if (item.name == "My Products") {
+      backgroundColor = Colors.green;
+    } else if (item.name == "Create Product") {
+      backgroundColor = Colors.red;
+    } else {
+      backgroundColor = Theme.of(context).colorScheme.secondary;
+    }
+
     return Material(
       // Menentukan warna latar belakang dari tema aplikasi.
-      color: Theme.of(context).colorScheme.secondary,
+      // ⬇️ Ganti agar mengikuti aturan warna di atas
+      color: backgroundColor,
       // Membuat sudut kartu melengkung.
       borderRadius: BorderRadius.circular(12),
 
@@ -23,16 +36,17 @@ class ItemCard extends StatelessWidget {
           // Menampilkan pesan SnackBar saat kartu ditekan.
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
-            ..showSnackBar(SnackBar(
-                content: Text("Kamu telah menekan tombol ${item.name}!")));
+            ..showSnackBar(
+              SnackBar(
+                content: Text("Kamu telah menekan tombol ${item.name}!"),
+              ),
+            );
 
           // Navigate ke route yang sesuai (tergantung jenis tombol)
-          if (item.name == "Add Product") {
+          if (item.name == "Create Product") {
             Navigator.push(
               context,
-              MaterialPageRoute(
-                builder: (context) => const ProductFormPage(),
-              ),
+              MaterialPageRoute(builder: (context) => const ProductFormPage()),
             );
           }
         },
@@ -44,11 +58,7 @@ class ItemCard extends StatelessWidget {
               // Menyusun ikon dan teks di tengah kartu.
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  item.icon,
-                  color: Colors.white,
-                  size: 30.0,
-                ),
+                Icon(item.icon, color: Colors.white, size: 30.0),
                 const Padding(padding: EdgeInsets.all(3)),
                 Text(
                   item.name,
@@ -62,5 +72,4 @@ class ItemCard extends StatelessWidget {
       ),
     );
   }
-
 }
