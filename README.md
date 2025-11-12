@@ -84,3 +84,52 @@ Pada proyek ini, kamu dapat menggunakan **hot reload** saat mengubah warna tombo
 ---
 
 </details>
+
+<details>
+<summary><b>Tugas 8</b></summary>
+
+# Tugas 8: Navigasi dan Layout di Flutter
+
+## 1. Jelaskan perbedaan antara `Navigator.push()` dan `Navigator.pushReplacement()` pada Flutter. Dalam kasus apa sebaiknya masing-masing digunakan pada aplikasi Football Shop kamu?
+- **`Navigator.push()`** menambahkan halaman baru di atas stack navigasi yang sudah ada.  
+  Artinya, halaman sebelumnya masih tersimpan di memori dan pengguna bisa kembali ke sana dengan tombol **Back**.  
+  Contoh pada proyek: ketika pengguna membuka halaman **Create Product**, halaman utama masih dapat diakses kembali dengan tombol back.
+
+- **`Navigator.pushReplacement()`** menggantikan halaman saat ini dengan halaman baru.  
+  Halaman sebelumnya dihapus dari stack, sehingga pengguna **tidak dapat kembali** ke halaman sebelumnya.  
+  Cocok digunakan untuk navigasi yang bersifat final seperti berpindah dari halaman **login** ke **beranda utama**.
+
+---
+
+## 2. Bagaimana kamu memanfaatkan *hierarchy widget* seperti `Scaffold`, `AppBar`, dan `Drawer` untuk membangun struktur halaman yang konsisten di seluruh aplikasi?
+Pada aplikasi Football Shop:
+- `Scaffold` digunakan sebagai struktur dasar setiap halaman, menyediakan area untuk `AppBar`, `Drawer`, dan `body`.
+- `AppBar` menampilkan judul “Toko Football” di bagian atas setiap halaman agar tampil konsisten.
+- `Drawer` berfungsi sebagai navigasi samping (sidebar) yang memudahkan pengguna berpindah antar halaman tanpa kehilangan konteks.
+- Kombinasi ketiganya membentuk kerangka halaman yang seragam dan mudah dikembangkan.
+
+---
+
+## 3. Dalam konteks desain antarmuka, apa kelebihan menggunakan *layout widget* seperti `Padding`, `SingleChildScrollView`, dan `ListView` saat menampilkan elemen-elemen form? Berikan contoh penggunaannya dari aplikasi kamu.
+| Widget | Kelebihan | Contoh Penggunaan |
+|---------|------------|------------------|
+| `Padding` | Memberi jarak di sekitar widget agar elemen tidak menempel satu sama lain. | Digunakan pada form input agar teks dan tombol terlihat rapi. |
+| `SingleChildScrollView` | Membuat seluruh halaman bisa di-*scroll*, mencegah elemen tertutup keyboard di layar kecil. | Digunakan di halaman **Create Product** agar form bisa di-scroll. |
+| `ListView` | Menampilkan daftar elemen yang banyak secara efisien (bisa di-scroll otomatis). | Dapat digunakan untuk menampilkan daftar produk di halaman **All Products**. |
+
+Dengan kombinasi ketiga layout widget ini, tampilan form tetap responsif dan nyaman di berbagai ukuran layar.
+
+---
+
+## 4. Bagaimana kamu menyesuaikan warna tema agar aplikasi Football Shop memiliki identitas visual yang konsisten dengan brand toko?
+Aplikasi Football Shop menggunakan tema warna utama biru (`primaryColor`) yang diatur melalui `ThemeData` pada `MaterialApp`.  
+Selain itu, tombol-tombol di halaman utama diberi warna berbeda sesuai fungsinya agar tetap menarik namun konsisten:
+- **All Products:** Biru (warna utama brand)
+- **My Products:** Hijau (melambangkan manajemen data pribadi)
+- **Create Product:** Merah (menunjukkan aksi penting/tambah produk)
+
+Penggunaan warna-warna ini membantu menjaga identitas visual aplikasi sekaligus memperkuat pengalaman pengguna (UX) dengan kode warna yang intuitif.
+
+---
+
+</details>
